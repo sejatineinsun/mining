@@ -25,3 +25,18 @@ mod Voting {
     fn addProposals(_counter: u128) {
         proposalVotes::write(_counter, 0);
     }
+
+    #[external]
+    fn voteOnProposal(prop_num: u128) {
+
+        let mut votes = proposalVotes::read(prop_num);
+        votes = votes + 1;
+
+        proposalVotes::write(prop_num, votes);
+    }
+
+    #[view]
+    fn getVotesForProposal(prop_num: u128) -> felt252 {
+      proposalVotes::read(prop_num)
+    }
+

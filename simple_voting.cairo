@@ -11,3 +11,17 @@ mod Voting {
         //vote: LegacyMap::<ContractAddress, u128>,
         proposalVotes: LegacyMap::<u128, felt252>,
     }
+        //Populate the proposals array with a few default proposals
+    #[constructor]
+    fn constructor(_name: felt252, _counter: u128) {
+        
+        //Initialise the proposal with 0 votes
+        proposalVotes::write(_counter, 0);
+        name::write(_name);
+
+    }
+
+    #[external]
+    fn addProposals(_counter: u128) {
+        proposalVotes::write(_counter, 0);
+    }

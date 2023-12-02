@@ -39,4 +39,6 @@ mod Voting {
     fn getVotesForProposal(prop_num: u128) -> felt252 {
       proposalVotes::read(prop_num)
     }
+    //TODO - get voted proposal for a particular voted
 
+}
